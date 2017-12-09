@@ -31,7 +31,7 @@
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-	<!-- 
+	
 	<filter>
 	    <filter-name>AuthenticationFilter</filter-name>
 	    <filter-class>br.com.cyborg.authentication.RestAuthenticationFilter</filter-class>
@@ -40,5 +40,5 @@
 		<filter-name>AuthenticationFilter</filter-name>
 		<url-pattern>/rest/*</url-pattern>
 	</filter-mapping>
- -->
+ 
 </web-app>
