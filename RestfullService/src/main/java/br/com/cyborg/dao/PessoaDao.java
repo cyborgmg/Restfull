@@ -46,6 +46,12 @@ public class PessoaDao implements Serializable {
 		aplicationBean.getPessoas().add(pessoa);
 	}
 	
+	public void addPessoas(List<Pessoa> pessoas){
+		for (Pessoa pessoa : pessoas) {
+			addPessoa(pessoa);
+		}
+	}
+	
 	public Boolean delPessoa(Pessoa pessoaDel){
 		
 		for (Pessoa pessoa : aplicationBean.getPessoas()) {
@@ -55,6 +61,19 @@ public class PessoaDao implements Serializable {
 		}
 		
 		return Boolean.FALSE;
+	}
+	
+	public List<Long> delPessoas(List<Pessoa> pessoas){
+		
+		List<Long> ids = new ArrayList<Long>();
+		
+		for (Pessoa pessoa : pessoas) {
+			if(!delPessoa(pessoa)){
+				ids.add(pessoa.getId());
+			}
+		}
+	
+	return ids;	
 	}
 	
 }

@@ -18,22 +18,19 @@ public class RestAuthenticationFilter implements javax.servlet.Filter {
 			FilterChain filter) throws IOException, ServletException {
 		if (request instanceof HttpServletRequest) {
 			HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-			String authCredentials = httpServletRequest
-					.getHeader(AUTHENTICATION_HEADER);
+			String authCredentials = httpServletRequest.getHeader(AUTHENTICATION_HEADER);
 
 			// You can implement dependancy injection here
 			AuthenticationService authenticationService = new AuthenticationService();
 
-			boolean authenticationStatus = authenticationService
-					.authenticate(authCredentials);
+			boolean authenticationStatus = authenticationService.authenticate(authCredentials);
 
 			if (authenticationStatus) {
 				filter.doFilter(request, response);
 			} else {
 				if (response instanceof HttpServletResponse) {
 					HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-					httpServletResponse
-							.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+					httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 				}
 			}
 		}
