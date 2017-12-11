@@ -6,60 +6,74 @@ import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.GenericEntity;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.google.gson.Gson;
+import com.thoughtworks.xstream.XStream;
 
 import br.com.cyborg.dao.PessoaDao;
 import br.com.cyborg.entity.Pessoa;
 import br.com.cyborg.enums.PessoaType;
 
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-
 @Path("/pessoa")
 public class PessoaService {
-	
+
 	@Inject
 	private PessoaDao pessoaDao;
+	
+	@GET
+	@Path("/pessoas")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})	
+	public Response getPessoas() {
 
+		XStream xstream = new XStream();
+		//xstream.alias("pessoas", List.class);
+		//xstream.alias("pessoa", Pessoa.class);
+		
+		String xml = xstream.toXML(pessoaDao.getAll());
+		
+		//String json = new Gson().toJson(pessoaDao.getAll());
+		
+		return Response.status(200).type(MediaType.APPLICATION_XML).entity(xml).build();
+	}
+	
+/*
 	@GET
 	@Path("/pessoas")
 	@Produces(MediaType.APPLICATION_XML)	
 	public List<Pessoa> getPessoas() {
 
-	    return pessoaDao.getAll();
+		return pessoaDao.getAll();
 	}
-
-/*	
+*/
+	/*
 	@GET
 	@Path("/pessoas")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
 	public Response getPessoas(@HeaderParam("accept") String format) {
 		
+	*/
+		/*
 		if(format.equals("json")){
 			return Response.status(200).type(MediaType.APPLICATION_JSON).entity(pessoaDao.getAll()).build();
 	    } else {
 	    	return Response.status(200).type(MediaType.APPLICATION_XML).entity(pessoaDao.getAll()).build();
 	    }
-		
-		
-		List<Pessoa> pessoas = pessoaDao.getAll();
-		GenericEntity<List<Pessoa>> entity = new GenericEntity<List<Pessoa>>(pessoas){};
-		
+		*/
 		
 		
 		//GenericEntity<List<Pessoa>> entity = new GenericEntity<List<Pessoa>>(pessoaDao.getAll()) {};
-		
+/*		
 		return Response.status(200).type(MediaType.APPLICATION_XML).entity(pessoaDao.getAll()).build();
 	}
-*/
-	
+
+*/	
 	/* 
 	 
 	  return Response.ok().entity(new GenericEntity<List<Cliente>>(cliente) {

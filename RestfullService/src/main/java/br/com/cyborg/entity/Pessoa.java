@@ -2,11 +2,13 @@ package br.com.cyborg.entity;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.cyborg.enums.PessoaType;
 
-@XmlRootElement
+@XmlRootElement(name="pessoa")
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 2391962686440107345L;
