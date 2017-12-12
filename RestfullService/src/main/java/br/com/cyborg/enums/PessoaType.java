@@ -23,5 +23,15 @@ public enum PessoaType {
     public String getValor() {
         return this.valor;
     }
+    
+    public static PessoaType getPessoaType(String tipo) {
+    	
+    	switch (tipo) {
+         	case "F":  return PessoaType.F;	
+         	case "J":  return PessoaType.J;
+    	}
+    	
+	return null;
+	}
 
 }

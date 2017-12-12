@@ -1,24 +1,79 @@
 package br.com.cyborg.dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.cyborg.entity.Endereco;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+
+import br.com.cyborg.bean.AplicationBean;
 import br.com.cyborg.entity.Pessoa;
 import br.com.cyborg.enums.PessoaType;
 
-public class PessoaDao {
+@Stateless(name = "pessoaDao")
+@TransactionAttribute(TransactionAttributeType.SUPPORTS)
+@Transactional
+public class PessoaDao implements Serializable {
+		
+	private static final long serialVersionUID = -7554544054833587985L;
+	
+	@Inject
+	private AplicationBean aplicationBean;
 	
 	public List<Pessoa> getAll(){
+		
+		return aplicationBean.getPessoas();
+	}
+	
+	public List<Pessoa> getPessoaTypes(PessoaType pessoaType){
+		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		
-		pessoas.add(new Pessoa(0L, "pessoa01", PessoaType.F, new Endereco(0L, "rua01", 1l)));
-		pessoas.add(new Pessoa(1L, "pessoa02", PessoaType.J, new Endereco(1L, "rua02", 2l)));
-		pessoas.add(new Pessoa(2L, "pessoa03", PessoaType.F, new Endereco(2L, "rua03", 3l)));
-		pessoas.add(new Pessoa(3L, "pessoa04", PessoaType.J, new Endereco(3L, "rua04", 4l)));
-		pessoas.add(new Pessoa(4L, "pessoa05", PessoaType.F, new Endereco(4L, "rua05", 5l)));
-		pessoas.add(new Pessoa(5L, "pessoa06", PessoaType.J, new Endereco(5L, "rua06", 6l)));
+		for (Pessoa pessoa : aplicationBean.getPessoas()) {
+			if(pessoaType==pessoa.getTipo()){
+				pessoas.add(pessoa);
+			}
+		}
 		
 		return pessoas;
 	}
+	
+	public void addPessoa(Pessoa pessoa){
+		aplicationBean.getPessoas().add(pessoa);
+	}
+	
+	public void addPessoas(List<Pessoa> pessoas){
+		for (Pessoa pessoa : pessoas) {
+			addPessoa(pessoa);
+		}
+	}
+	
+	public Boolean delPessoa(Pessoa pessoaDel){
+		
+		for (Pessoa pessoa : aplicationBean.getPessoas()) {
+			if(pessoaDel.getId()==pessoa.getId()){
+				return aplicationBean.getPessoas().remove(pessoa);
+			}
+		}
+		
+		return Boolean.FALSE;
+	}
+	
+	public List<Long> delPessoas(List<Pessoa> pessoas){
+		
+		List<Long> ids = new ArrayList<Long>();
+		
+		for (Pessoa pessoa : pessoas) {
+			if(!delPessoa(pessoa)){
+				ids.add(pessoa.getId());
+			}
+		}
+	
+	return ids;	
+	}
+	
 }
