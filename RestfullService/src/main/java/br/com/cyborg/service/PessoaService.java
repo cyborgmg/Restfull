@@ -10,15 +10,12 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.google.gson.Gson;
-import com.thoughtworks.xstream.XStream;
-
 import br.com.cyborg.dao.PessoaDao;
 import br.com.cyborg.entity.Pessoa;
+import br.com.cyborg.entity.Pessoas;
 import br.com.cyborg.enums.PessoaType;
 
 @Path("/pessoa")
@@ -28,19 +25,13 @@ public class PessoaService {
 	private PessoaDao pessoaDao;
 	
 	@GET
-	@Path("/pessoas")
+	@Path("/pessoas/{api}")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})	
-	public Response getPessoas() {
-
-		XStream xstream = new XStream();
-		//xstream.alias("pessoas", List.class);
-		//xstream.alias("pessoa", Pessoa.class);
+	public Response getPessoas(@PathParam("api") String api) {
+	
+		Pessoas pessoas = new Pessoas(pessoaDao.getAll());  
 		
-		String xml = xstream.toXML(pessoaDao.getAll());
-		
-		//String json = new Gson().toJson(pessoaDao.getAll());
-		
-		return Response.status(200).type(MediaType.APPLICATION_XML).entity(xml).build();
+		return Response.status(200).type( api.equals("json")?MediaType.APPLICATION_JSON:MediaType.APPLICATION_XML).entity(pessoas).build();
 	}
 	
 /*
