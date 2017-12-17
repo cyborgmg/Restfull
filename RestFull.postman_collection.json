@@ -3,8 +3,24 @@
 	"name": "RestFull",
 	"description": "",
 	"order": [
-		"5c9b4706-bf3e-3f63-f93d-b475104ecbec",
-		"455b79fd-966f-ee14-9dca-420bb5a7390e"
+		"c616a9c9-3d61-223a-9fd5-57d29c2a49cd",
+		"844da4c5-349d-fa36-b8c1-75f652d1a38b",
+		"e218183b-c79b-dd51-3e07-59ca3d5997b6",
+		"a7eefdac-c903-ab7e-954e-05afeff41e00",
+		"bcbad9b4-4471-ab8d-a905-c8ac7d429ebe",
+		"e76ab7d2-e617-3c22-7c4e-cdb900b18d31",
+		"0751b07c-e425-6eca-7e2e-473be9b69b58",
+		"26abc7ab-a6a7-082e-4139-239e9e5adc1b",
+		"99660b62-8125-dd79-7f8d-7943cb53c410",
+		"0952003c-e5d9-34ca-1df3-bdc7d7b2d469",
+		"bc156601-4ff6-779a-2509-e15cd80ab2ec",
+		"2b763e52-6236-3a54-8fe8-308d9cac92ec",
+		"1ac57b8e-8151-f5e8-d318-5b88e412cb6a",
+		"cd9758c9-01c8-6714-e4d3-d04b2bab6fa6",
+		"1219bae6-6688-ade3-c0bc-776f8e860749",
+		"b8be4bb8-49ac-d68e-58ff-2eda504cf328",
+		"e0c68b24-f717-ddb5-3a18-e477e1ab9b56",
+		"2ed52130-6fe8-8d3e-146b-e229a62633bd"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -13,50 +29,594 @@
 	"public": false,
 	"requests": [
 		{
-			"id": "455b79fd-966f-ee14-9dca-420bb5a7390e",
-			"headers": "",
-			"headerData": [],
-			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoas",
+			"id": "0751b07c-e425-6eca-7e2e-473be9b69b58",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/addPessoa/",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
-			"data": null,
-			"dataMode": "params",
-			"name": "Pessoa",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1512314569759,
-			"version": 2,
-			"responses": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1512856227285,
+			"name": "addPessoa XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoa>\n        <endereco>\n            <id>10</id>\n            <numero>10</numero>\n            <rua>rua10</rua>\n        </endereco>\n        <id>10</id>\n        <nome>pessoa10</nome>\n        <tipo>F</tipo>\n</pessoa>"
 		},
 		{
-			"id": "5c9b4706-bf3e-3f63-f93d-b475104ecbec",
-			"headers": "",
-			"headerData": [],
-			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/hello/rodrigo",
+			"id": "0952003c-e5d9-34ca-1df3-bdc7d7b2d469",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/addPessoas/",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513525381442,
+			"name": "addPessoas JSON",
+			"description": "",
 			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"pessoa\": [\n        {\n            \"endereco\": {\n                \"id\": \"22\",\n                \"numero\": \"22\",\n                \"rua\": \"rua022\"\n            },\n            \"id\": \"22\",\n            \"nome\": \"pessoa22\",\n            \"tipo\": \"F\"\n        },\n        {\n            \"endereco\": {\n                \"id\": \"23\",\n                \"numero\": \"23\",\n                \"rua\": \"rua23\"\n            },\n            \"id\": \"23\",\n            \"nome\": \"pessoa23\",\n            \"tipo\": \"J\"\n        }\n    ]\n}"
+		},
+		{
+			"id": "1219bae6-6688-ade3-c0bc-776f8e860749",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/delPessoa/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513539961102,
+			"name": "delPessoa XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoa>\n        <id>0</id>\n</pessoa>"
+		},
+		{
+			"id": "1ac57b8e-8151-f5e8-d318-5b88e412cb6a",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/updPessoa/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513543592311,
+			"name": "updPessoa JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"endereco\": {\n        \"id\": \"222\",\n        \"numero\": \"222\",\n        \"rua\": \"rua222\"\n    },\n    \"id\": \"2\",\n    \"nome\": \"pessoa222\",\n    \"tipo\": \"J\"\n}"
+		},
+		{
+			"id": "26abc7ab-a6a7-082e-4139-239e9e5adc1b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/addPessoa/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513517831165,
+			"name": "addPessoa JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"endereco\": {\n        \"id\": \"16\",\n        \"numero\": \"16\",\n        \"rua\": \"rua16\"\n    },\n    \"id\": \"16\",\n    \"nome\": \"pessoa16\",\n    \"tipo\": \"J\"\n}"
+		},
+		{
+			"id": "2b763e52-6236-3a54-8fe8-308d9cac92ec",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/updPessoas/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513543958876,
+			"name": "updPessoas XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoas>\n    <pessoa>\n        <endereco>\n            <id>333</id>\n            <numero>333</numero>\n            <rua>rua333</rua>\n        </endereco>\n        <id>3</id>\n        <nome>pessoa333</nome>\n        <tipo>F</tipo>\n    </pessoa>\n    <pessoa>\n        <endereco>\n            <id>444</id>\n            <numero>444</numero>\n            <rua>rua444</rua>\n        </endereco>\n        <id>4</id>\n        <nome>pessoa444</nome>\n        <tipo>J</tipo>\n    </pessoa>\n    <pessoa>\n        <endereco>\n            <id>1000</id>\n            <numero>1000</numero>\n            <rua>rua1000</rua>\n        </endereco>\n        <id>1000</id>\n        <nome>pessoa1000</nome>\n        <tipo>J</tipo>\n    </pessoa>    \n</pessoas>"
+		},
+		{
+			"id": "2ed52130-6fe8-8d3e-146b-e229a62633bd",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/delPessoas/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513541091315,
+			"name": "delPessoas JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"pessoa\": [\n        {\n            \"id\": \"6\"\n        },\n        {\n            \"id\": \"7\"\n        }\n    ]\n}"
+		},
+		{
+			"id": "844da4c5-349d-fa36-b8c1-75f652d1a38b",
+			"headers": "Accept: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoa/0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
 			"data": null,
 			"dataMode": "params",
-			"name": "hello",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1512309471579,
-			"version": 2,
-			"responses": [],
 			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513517242791,
+			"name": "getPessoa JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
+		},
+		{
+			"id": "99660b62-8125-dd79-7f8d-7943cb53c410",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/addPessoas/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513525387352,
+			"name": "addPessoas XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoas>\n    <pessoa>\n        <endereco>\n            <id>20</id>\n            <numero>20</numero>\n            <rua>rua20</rua>\n        </endereco>\n        <id>20</id>\n        <nome>pessoa20</nome>\n        <tipo>F</tipo>\n    </pessoa>\n    <pessoa>\n        <endereco>\n            <id>21</id>\n            <numero>21</numero>\n            <rua>rua21</rua>\n        </endereco>\n        <id>21</id>\n        <nome>pessoa21</nome>\n        <tipo>J</tipo>\n    </pessoa>\n</pessoas>"
+		},
+		{
+			"id": "a7eefdac-c903-ab7e-954e-05afeff41e00",
+			"headers": "Accept: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoas",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513525384396,
+			"name": "getPessoas JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
+		},
+		{
+			"id": "b8be4bb8-49ac-d68e-58ff-2eda504cf328",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/delPessoa/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513539956131,
+			"name": "delPessoa JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"id\": \"1\"\n}"
+		},
+		{
+			"id": "bc156601-4ff6-779a-2509-e15cd80ab2ec",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/updPessoa/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513542712239,
+			"name": "updPessoa XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoa>\n        <endereco>\n            <id>111</id>\n            <numero>111</numero>\n            <rua>rua111</rua>\n        </endereco>\n        <id>1</id>\n        <nome>pessoa111</nome>\n        <tipo>F</tipo>\n</pessoa>"
+		},
+		{
+			"id": "bcbad9b4-4471-ab8d-a905-c8ac7d429ebe",
+			"headers": "Accept: application/xml\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoas/J",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513515413488,
+			"name": "getPessoaType JURIDICA XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
+		},
+		{
+			"id": "c616a9c9-3d61-223a-9fd5-57d29c2a49cd",
+			"headers": "Accept: application/xml\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoa/0",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513517205233,
+			"name": "getPessoa XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
+		},
+		{
+			"id": "cd9758c9-01c8-6714-e4d3-d04b2bab6fa6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/updPessoas/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513544214019,
+			"name": "updPessoas JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "{\n    \"pessoa\": [\n        {\n            \"endereco\": {\n                \"id\": \"555\",\n                \"numero\": \"555\",\n                \"rua\": \"rua555\"\n            },\n            \"id\": \"5\",\n            \"nome\": \"pessoa555\",\n            \"tipo\": \"F\"\n        },\n        {\n            \"endereco\": {\n                \"id\": \"666\",\n                \"numero\": \"666\",\n                \"rua\": \"rua666\"\n            },\n            \"id\": \"6\",\n            \"nome\": \"pessoa666\",\n            \"tipo\": \"F\"\n        },\n        {\n            \"endereco\": {\n                \"id\": \"1000\",\n                \"numero\": \"1000\",\n                \"rua\": \"rua1000\"\n            },\n            \"id\": \"1000\",\n            \"nome\": \"pessoa1000\",\n            \"tipo\": \"F\"\n        }\n    ]\n}"
+		},
+		{
+			"id": "e0c68b24-f717-ddb5-3a18-e477e1ab9b56",
+			"headers": "Content-Type: application/xml\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/delPessoas/",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513540731772,
+			"name": "delPessoas XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": [],
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoas>\n\t<pessoa>\n        <id>3</id>\n\t</pessoa>\n\t<pessoa>\n        <id>4</id>\n\t</pessoa>\n</pessoas>\t"
+		},
+		{
+			"id": "e218183b-c79b-dd51-3e07-59ca3d5997b6",
+			"headers": "Accept: application/xml\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/xml",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoas",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513525390707,
+			"name": "getPessoas XML",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
+		},
+		{
+			"id": "e76ab7d2-e617-3c22-7c4e-cdb900b18d31",
+			"headers": "Accept: application/json\n",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/pessoa/pessoas/F",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "admin",
+				"password": "admin"
+			},
+			"time": 1513515553547,
+			"name": "getPessoaType FISICA JSON",
+			"description": "",
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
+			"responses": []
 		}
 	]
 }

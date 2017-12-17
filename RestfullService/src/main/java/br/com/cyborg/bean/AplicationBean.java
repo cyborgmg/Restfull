@@ -31,12 +31,14 @@ public class AplicationBean implements Serializable {
 	
 	@PostConstruct
 	private void init(){
-		pessoas.add(new Pessoa(0L, "pessoa01", PessoaType.F, new Endereco(0L, "rua01", 1l)));
-		pessoas.add(new Pessoa(1L, "pessoa02", PessoaType.J, new Endereco(1L, "rua02", 2l)));
-		pessoas.add(new Pessoa(2L, "pessoa03", PessoaType.F, new Endereco(2L, "rua03", 3l)));
-		pessoas.add(new Pessoa(3L, "pessoa04", PessoaType.J, new Endereco(3L, "rua04", 4l)));
-		pessoas.add(new Pessoa(4L, "pessoa05", PessoaType.F, new Endereco(4L, "rua05", 5l)));
-		pessoas.add(new Pessoa(5L, "pessoa06", PessoaType.J, new Endereco(5L, "rua06", 6l)));
+		pessoas.add(new Pessoa(0L, "pessoa00", PessoaType.F, new Endereco(0L, "rua00", 0L)));
+		pessoas.add(new Pessoa(1L, "pessoa01", PessoaType.J, new Endereco(1L, "rua01", 1L)));
+		pessoas.add(new Pessoa(2L, "pessoa02", PessoaType.F, new Endereco(2L, "rua02", 2L)));
+		pessoas.add(new Pessoa(3L, "pessoa03", PessoaType.J, new Endereco(3L, "rua03", 3L)));
+		pessoas.add(new Pessoa(4L, "pessoa04", PessoaType.F, new Endereco(4L, "rua04", 4L)));
+		pessoas.add(new Pessoa(5L, "pessoa05", PessoaType.J, new Endereco(5L, "rua05", 5L)));
+		pessoas.add(new Pessoa(6L, "pessoa06", PessoaType.J, new Endereco(6L, "rua06", 6L)));
+		pessoas.add(new Pessoa(7L, "pessoa07", PessoaType.J, new Endereco(7L, "rua07", 7L)));
 		
 		logger.info("Lista carregada com "+pessoas.size()+" registros");
 	}

@@ -69,6 +69,33 @@ public class PessoaDao implements Serializable {
 	return 	aplicationBean.getPessoas().size()==(pessoasOldSize+pessoasNewSize);
 	}
 	
+	public Boolean updPessoa(Pessoa pessoaUpd){
+		
+			for (Pessoa pessoa : aplicationBean.getPessoas()) {
+				if(pessoaUpd.getId()==pessoa.getId()){
+
+					aplicationBean.getPessoas().set(aplicationBean.getPessoas().indexOf(pessoa), pessoaUpd);
+					
+					return Boolean.TRUE;
+				}	
+			}
+			
+		return Boolean.FALSE;
+	}
+	
+	public List<Pessoa> updPessoas(List<Pessoa> pessoas){
+		
+		List<Pessoa> pessoasNF = new ArrayList<Pessoa>();
+		
+		for (Pessoa pessoa : pessoas) {
+			if(!updPessoa(pessoa)){
+				pessoasNF.add(new Pessoa(pessoa.getId()));
+			}
+		}
+	
+	return pessoasNF;	
+	}
+	
 	public Boolean delPessoa(Pessoa pessoaDel){
 		
 		for (Pessoa pessoa : aplicationBean.getPessoas()) {
@@ -80,17 +107,17 @@ public class PessoaDao implements Serializable {
 		return Boolean.FALSE;
 	}
 	
-	public List<Long> delPessoas(List<Pessoa> pessoas){
+	public List<Pessoa> delPessoas(List<Pessoa> pessoas){
 		
-		List<Long> ids = new ArrayList<Long>();
+		List<Pessoa> pessoasNF = new ArrayList<Pessoa>();
 		
 		for (Pessoa pessoa : pessoas) {
 			if(!delPessoa(pessoa)){
-				ids.add(pessoa.getId());
+				pessoasNF.add(new Pessoa(pessoa.getId()));
 			}
 		}
 	
-	return ids;	
+	return pessoasNF;	
 	}
 	
 }

@@ -9,6 +9,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -75,6 +76,7 @@ public class PessoaService {
     @Path("/addPessoa")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public Response addPessoa(Pessoa pessoa){
+		
 		pessoaDao.addPessoa(pessoa);
 		return Response.status(200).build();
 	}
@@ -84,13 +86,42 @@ public class PessoaService {
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
     public Response addPessoas(Pessoas pessoas){
 		
-		return Response.status(pessoaDao.addPessoas(pessoas.getPessoa())?200:406).build();
+		return Response.status(pessoaDao.addPessoas(pessoas.getPessoas())?200:406).build();
+	}
+	
+	@PUT
+    @Path("/updPessoa")
+	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public Response updPessoa(Pessoa pessoa){
+		
+		if(pessoaDao.updPessoa(pessoa)){
+			return Response.status(200).build();
+		}else{
+			return Response.status(404).entity("Pessoa não existe").build();
+		}
+	}
+	
+	@PUT
+    @Path("/updPessoas")
+    @Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public Response updPessoas(@Context HttpHeaders headers, Pessoas pessoas){
+		
+		pessoas.setPessoas( pessoaDao.updPessoas(pessoas.getPessoas()) );
+		
+		String contentType = headers.getRequestHeader("Content-Type").get(0);
+		
+		if(pessoas.getPessoas().size()==0){
+			return Response.status(200).build();
+		}else{
+			return Response.status(404).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
+					.entity(pessoas).build();
+		}
 	}
 	
 	@DELETE
     @Path("/delPessoa")
-    @Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.APPLICATION_XML)
+    @Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 	public Response delPessoa(Pessoa pessoa){
 		if(pessoaDao.delPessoa(pessoa)){
 			return Response.status(200).build();
@@ -101,26 +132,19 @@ public class PessoaService {
 	
 	@DELETE
     @Path("/delPessoas")
-    @Consumes(MediaType.APPLICATION_XML)
-	@Produces(MediaType.APPLICATION_XML)
-	public Response delPessoas(List<Pessoa> pessoas){
+    @Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
+	public Response delPessoas(@Context HttpHeaders headers, Pessoas pessoas){
 		
-		List<Long> ids = pessoaDao.delPessoas(pessoas);
+		pessoas.setPessoas( pessoaDao.delPessoas(pessoas.getPessoas()) );
 		
-		StringBuilder xml = new StringBuilder("<pessoas>");
+		String contentType = headers.getRequestHeader("Content-Type").get(0);
 		
-		for (Long id : ids) {
-			xml.append("<pessoa>");
-			xml.append("<id>"+id+"</id>");
-			xml.append("</pessoa>");
-		}
-		
-		xml.append("</pessoas>");
-			
-		if(ids.size()==0){
+		if(pessoas.getPessoas().size()==0){
 			return Response.status(200).build();
 		}else{
-			return Response.status(404).entity(xml.toString()).build();
+			return Response.status(404).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
+					.entity(pessoas).build();
 		}
 	}
 
