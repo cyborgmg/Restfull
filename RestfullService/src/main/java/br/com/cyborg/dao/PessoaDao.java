@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import br.com.cyborg.bean.AplicationBean;
 import br.com.cyborg.entity.Pessoa;
+import br.com.cyborg.entity.Pessoas;
 import br.com.cyborg.enums.PessoaType;
 
 @Stateless(name = "pessoaDao")
@@ -24,12 +25,23 @@ public class PessoaDao implements Serializable {
 	@Inject
 	private AplicationBean aplicationBean;
 	
-	public List<Pessoa> getAll(){
+	public Pessoas getAll(){
 		
-		return aplicationBean.getPessoas();
+		return new Pessoas(aplicationBean.getPessoas());
 	}
 	
-	public List<Pessoa> getPessoaTypes(PessoaType pessoaType){
+	public Pessoa getPessoa(Long id){
+		
+		for (Pessoa pessoa : aplicationBean.getPessoas()) {
+			if(id==pessoa.getId()){
+				return pessoa;
+			}
+		}
+		
+		return null;
+	}
+	
+	public Pessoas getPessoaTypes(PessoaType pessoaType){
 		
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		
@@ -39,17 +51,22 @@ public class PessoaDao implements Serializable {
 			}
 		}
 		
-		return pessoas;
+		return new Pessoas(pessoas);
 	}
 	
 	public void addPessoa(Pessoa pessoa){
 		aplicationBean.getPessoas().add(pessoa);
 	}
 	
-	public void addPessoas(List<Pessoa> pessoas){
+	public Boolean addPessoas(List<Pessoa> pessoas){
+	int pessoasOldSize = aplicationBean.getPessoas().size();
+	int pessoasNewSize = pessoas.size();
+	
 		for (Pessoa pessoa : pessoas) {
 			addPessoa(pessoa);
 		}
+		
+	return 	aplicationBean.getPessoas().size()==(pessoasOldSize+pessoasNewSize);
 	}
 	
 	public Boolean delPessoa(Pessoa pessoaDel){

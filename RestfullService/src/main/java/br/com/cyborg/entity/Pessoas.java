@@ -4,12 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="pessoas")
 public class Pessoas implements Serializable {
 
-	private List<Pessoa> pessoas = new ArrayList<Pessoa>();
+	
+	private List<Pessoa> pessoa = new ArrayList<Pessoa>();
 
 	public Pessoas() {
 		super();
@@ -18,19 +21,19 @@ public class Pessoas implements Serializable {
 	
 	
 
-	public Pessoas(List<Pessoa> pessoas) {
+	public Pessoas(List<Pessoa> pessoa) {
 		super();
-		this.pessoas = pessoas;
+		this.pessoa = pessoa;
 	}
 
 
 
-	public List<Pessoa> getPessoas() {
-		return pessoas;
+	public List<Pessoa> getPessoa() {
+		return pessoa;
 	}
 
-	public void setPessoas(List<Pessoa> pessoas) {
-		this.pessoas = pessoas;
+	public void setPessoa(List<Pessoa> pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 }

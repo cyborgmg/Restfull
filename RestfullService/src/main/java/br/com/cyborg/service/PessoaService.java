@@ -1,17 +1,26 @@
 package br.com.cyborg.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 
 import br.com.cyborg.dao.PessoaDao;
 import br.com.cyborg.entity.Pessoa;
@@ -21,76 +30,50 @@ import br.com.cyborg.enums.PessoaType;
 @Path("/pessoa")
 public class PessoaService {
 
+	String[] apis = { MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML };
+	
 	@Inject
 	private PessoaDao pessoaDao;
 	
 	@GET
-	@Path("/pessoas/{api}")
+	@Path("/pessoas")
 	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})	
-	public Response getPessoas(@PathParam("api") String api) {
-	
-		Pessoas pessoas = new Pessoas(pessoaDao.getAll());  
+	public Response getPessoas(@Context HttpHeaders headers) {
 		
-		return Response.status(200).type( api.equals("json")?MediaType.APPLICATION_JSON:MediaType.APPLICATION_XML).entity(pessoas).build();
+		String accept = headers.getRequestHeader("Accept").get(0);
+		
+		return Response.status(200).type(ArrayUtils.contains( apis, accept )?accept:MediaType.APPLICATION_XML).entity(pessoaDao.getAll()).build();
 	}
 	
-/*
 	@GET
-	@Path("/pessoas")
-	@Produces(MediaType.APPLICATION_XML)	
-	public List<Pessoa> getPessoas() {
-
-		return pessoaDao.getAll();
-	}
-*/
-	/*
-	@GET
-	@Path("/pessoas")
-	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
-	public Response getPessoas(@HeaderParam("accept") String format) {
+	@Path("/pessoa/{id}")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})	
+	public Response getPessoas(@HeaderParam("Accept") String accept, @PathParam("id") Long id) {
 		
-	*/
-		/*
-		if(format.equals("json")){
-			return Response.status(200).type(MediaType.APPLICATION_JSON).entity(pessoaDao.getAll()).build();
-	    } else {
-	    	return Response.status(200).type(MediaType.APPLICATION_XML).entity(pessoaDao.getAll()).build();
-	    }
-		*/
-		
-		
-		//GenericEntity<List<Pessoa>> entity = new GenericEntity<List<Pessoa>>(pessoaDao.getAll()) {};
-/*		
-		return Response.status(200).type(MediaType.APPLICATION_XML).entity(pessoaDao.getAll()).build();
+		Pessoa pessoa = pessoaDao.getPessoa(id);
+		if(pessoa!=null){
+			return Response.status(200).type(ArrayUtils.contains( apis, accept )?accept:MediaType.APPLICATION_XML).entity(pessoa).build();
+		}else{
+			return Response.status(404).type(ArrayUtils.contains( apis, accept )?accept:MediaType.APPLICATION_XML).entity("Pessoa não encontrada").build();
+		}
 	}
-
-*/	
-	/* 
-	 
-	  return Response.ok().entity(new GenericEntity<List<Cliente>>(cliente) {
-	}).build();
-	 
+	
+	
 	@GET
-	@Path("/pessoas")
-	//@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-	@Produces(MediaType.APPLICATION_XML)
-	public Response getPessoas(@HeaderParam("accept") String format) {
+	@Path("/pessoas/{tipo}")
+	@Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	public Response getPessoas(@Context HttpHeaders headers, String type, @PathParam("tipo") String tipo) {
 
-		return Response.status(200).type(MediaType.APPLICATION_JSON).entity(pessoaDao.getAll()).build();
-	}
-*/	
-	@GET
-	@Path("/pessoas/{type}/{tipo}")
-	@Produces(MediaType.APPLICATION_XML)	
-	public List<Pessoa> getPessoas(@PathParam("type") String type, @PathParam("tipo") String valor) {
-
-	    return pessoaDao.getPessoaTypes(PessoaType.getPessoaType(valor));
+		String accept = headers.getRequestHeader("Accept").get(0);
+		
+		return Response.status(200).type(ArrayUtils.contains( apis, accept )?accept:MediaType.APPLICATION_XML)
+				.entity(pessoaDao.getPessoaTypes(PessoaType.getPessoaType(tipo))).build();
+	    
 	}
 	
 	@POST
     @Path("/addPessoa")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-    //@Consumes(MediaType.APPLICATION_XML)
 	public Response addPessoa(Pessoa pessoa){
 		pessoaDao.addPessoa(pessoa);
 		return Response.status(200).build();
@@ -99,10 +82,9 @@ public class PessoaService {
 	@POST
     @Path("/addPessoas")
 	@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
-    //@Consumes(MediaType.APPLICATION_XML)
-	public Response addPessoas(List<Pessoa> pessoas){
-		pessoaDao.addPessoas(pessoas);
-		return Response.status(200).build();
+    public Response addPessoas(Pessoas pessoas){
+		
+		return Response.status(pessoaDao.addPessoas(pessoas.getPessoa())?200:406).build();
 	}
 	
 	@DELETE
