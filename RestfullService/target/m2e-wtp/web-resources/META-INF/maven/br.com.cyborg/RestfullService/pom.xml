@@ -30,6 +30,13 @@
 	
   <dependencies>
    
+   		<dependency>
+		  <groupId>br.com.cyborg</groupId>
+		  <artifactId>RestfullCommons</artifactId>
+		  <version>${project.parent.version}</version>
+		  <scope>provided</scope>
+		</dependency>
+   		<!-- *************************************************** -->
 		<dependency>
 		  <groupId>commons-beanutils</groupId>
 		  <artifactId>commons-beanutils</artifactId>
