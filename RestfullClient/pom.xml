@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- <artifactId>RestfullClient</artifactId> -->
+    <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>Restfull</artifactId>
+    <groupId>br.com.cyborg</groupId>
+    <version>1.0</version>
+  </parent>
+  
+  <artifactId>RestfullClient</artifactId>
+  <packaging>war</packaging>  
+  <name>RestfullClient</name>
+
+  <build>
+  	<finalName>RestfullClient</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <inherited>true</inherited>
+            <version>3.0</version>
+            <configuration>
+            	<wtpContextName>RestfullClient</wtpContextName>
+                <source>1.8</source>
+                <target>1.8</target>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+  
+    <dependencies>
+   
+   		<dependency>
+		  <groupId>br.com.cyborg</groupId>
+		  <artifactId>RestfullCommons</artifactId>
+		  <version>${project.parent.version}</version>
+		  <scope>provided</scope>
+		</dependency>
+   		<!-- *************************************************** -->
+		<dependency>
+		  <groupId>commons-beanutils</groupId>
+		  <artifactId>commons-beanutils</artifactId>
+		  <version>1.9.2</version>
+		  <scope>provided</scope>
+		</dependency>		
+		<dependency>
+		  <groupId>commons-collections</groupId>
+		  <artifactId>commons-collections</artifactId>
+		  <version>3.2.2</version>
+		  <scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.commons</groupId>
+		  <artifactId>commons-lang3</artifactId>
+		  <version>3.7</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-email</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		    <version>1.10</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		
+ 		<!-- ********JERSEY**************************************************** -->
+
+ 		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-core</artifactId>
+		    <version>1.19</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-server</artifactId>
+		    <version>1.19</version>
+		</dependency>
+ 		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-servlet</artifactId>
+		    <version>1.19</version>
+		</dependency> 
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-json</artifactId>
+		    <version>1.19</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-client</artifactId>
+		    <version>1.19</version>
+		</dependency>
+				
+		<!-- ****************************************************************** -->
+		
+		<dependency>
+		    <groupId>org.jboss.logmanager</groupId>
+		    <artifactId>log4j-jboss-logmanager</artifactId>
+		    <version>1.1.2.Final</version>
+		    <scope>provided</scope>
+		</dependency>
+ 
+  </dependencies>
+    
+</project>

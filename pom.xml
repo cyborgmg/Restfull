@@ -34,5 +34,6 @@
 	<modules>
 		<module>RestfullService</module>
     <module>RestfullCommons</module>
+    <module>RestfullClient</module>
   </modules>
 </project>
