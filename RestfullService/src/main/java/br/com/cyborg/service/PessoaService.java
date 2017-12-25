@@ -106,7 +106,8 @@ public class PessoaService {
 		String contentType = headers.getRequestHeader("Content-Type").get(0);
 		
 		if(pessoas.getPessoas().size()==0){
-			return Response.status(200).build();
+			return Response.status(200).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
+					.entity(pessoas).build();
 		}else{
 			return Response.status(404).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
 					.entity(pessoas).build();
@@ -135,7 +136,8 @@ public class PessoaService {
 		String contentType = headers.getRequestHeader("Content-Type").get(0);
 		
 		if(pessoas.getPessoas().size()==0){
-			return Response.status(200).build();
+			return Response.status(200).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
+					.entity(pessoas).build();
 		}else{
 			return Response.status(404).type(ArrayUtils.contains( apis, contentType )?contentType:MediaType.APPLICATION_XML)
 					.entity(pessoas).build();

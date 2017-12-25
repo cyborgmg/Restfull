@@ -71,6 +71,11 @@ public class Pessoa implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [id=" + id + ", nome=" + nome + ", tipo=" + tipo + ", endereco=" + endereco.toString() + "]";
 	} 
 
 	

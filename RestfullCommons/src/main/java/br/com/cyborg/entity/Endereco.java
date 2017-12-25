@@ -46,6 +46,11 @@ public class Endereco implements Serializable {
 	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
+
+	@Override
+	public String toString() {
+		return "Endereco [id=" + id + ", rua=" + rua + ", numero=" + numero + "]";
+	}
 	
 	
 }
