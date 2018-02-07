@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.cyborg.enums.PessoaType;
@@ -13,9 +15,13 @@ public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 2391962686440107345L;
 	
+	
 	private Long id;
+	
 	private String nome;
+	
 	private PessoaType tipo;
+	
 	private Endereco endereco;
 	
 	public Pessoa() {
@@ -34,16 +40,17 @@ public class Pessoa implements Serializable {
 		this.endereco = endereco;
 	}
 
+	@XmlAttribute
 	public Long getId() {
 		return id;
 	}
 
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
+	@XmlAttribute
 	public String getNome() {
 		return nome;
 	}
@@ -53,7 +60,7 @@ public class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 
-	
+	@XmlAttribute
 	public PessoaType getTipo() {
 		return tipo;
 	}
@@ -63,7 +70,7 @@ public class Pessoa implements Serializable {
 		this.tipo = tipo;
 	}
 
-
+	@XmlElement
 	public Endereco getEndereco() {
 		return endereco;
 	}

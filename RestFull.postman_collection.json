@@ -14,13 +14,14 @@
 		"99660b62-8125-dd79-7f8d-7943cb53c410",
 		"0952003c-e5d9-34ca-1df3-bdc7d7b2d469",
 		"bc156601-4ff6-779a-2509-e15cd80ab2ec",
-		"2b763e52-6236-3a54-8fe8-308d9cac92ec",
 		"1ac57b8e-8151-f5e8-d318-5b88e412cb6a",
+		"2b763e52-6236-3a54-8fe8-308d9cac92ec",
 		"cd9758c9-01c8-6714-e4d3-d04b2bab6fa6",
 		"1219bae6-6688-ade3-c0bc-776f8e860749",
 		"b8be4bb8-49ac-d68e-58ff-2eda504cf328",
 		"e0c68b24-f717-ddb5-3a18-e477e1ab9b56",
-		"2ed52130-6fe8-8d3e-146b-e229a62633bd"
+		"2ed52130-6fe8-8d3e-146b-e229a62633bd",
+		"5c9b4706-bf3e-3f63-f93d-b475104ecbec"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -54,12 +55,12 @@
 				"username": "admin",
 				"password": "admin"
 			},
-			"time": 1513544726320,
+			"time": 1518006410694,
 			"name": "addPessoa XML",
 			"description": "",
 			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
 			"responses": [],
-			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoa>\n        <endereco>\n            <id>8</id>\n            <numero>08</numero>\n            <rua>rua08</rua>\n        </endereco>\n        <id>8</id>\n        <nome>pessoa08</nome>\n        <tipo>F</tipo>\n</pessoa>"
+			"rawModeData": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<pessoa id=\"8\" nome=\"pessoa08\" tipo=\"F\">\n    <endereco id=\"8\" numero=\"8\" rua=\"rua08\"/>\n</pessoa>"
 		},
 		{
 			"id": "0952003c-e5d9-34ca-1df3-bdc7d7b2d469",
@@ -259,6 +260,31 @@
 			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3",
 			"responses": [],
 			"rawModeData": "{\n    \"pessoa\": [\n        {\n            \"id\": \"5\"\n        },\n        {\n            \"id\": \"6\"\n        }\n    ]\n}"
+		},
+		{
+			"folder": null,
+			"id": "5c9b4706-bf3e-3f63-f93d-b475104ecbec",
+			"name": "hello",
+			"dataMode": "params",
+			"data": null,
+			"auth": null,
+			"events": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": null,
+			"variables": null,
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "http://neon.cyborg.com.br:8080/RestfullService/rest/hello/rodrigo",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [],
+			"pathVariableData": [],
+			"collectionId": "5f841a88-6953-280c-5518-35c95db3e8b3"
 		},
 		{
 			"id": "844da4c5-349d-fa36-b8c1-75f652d1a38b",

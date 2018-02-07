@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 
@@ -28,18 +29,23 @@ public class Endereco implements Serializable {
 		this.numero = numero;
 	}
 	
+	@XmlAttribute
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	@XmlAttribute
 	public String getRua() {
 		return rua;
 	}
 	public void setRua(String rua) {
 		this.rua = rua;
 	}
+	
+	@XmlAttribute
 	public Long getNumero() {
 		return numero;
 	}
