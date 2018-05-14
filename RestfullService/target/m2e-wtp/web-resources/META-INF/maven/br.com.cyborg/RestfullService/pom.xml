@@ -124,6 +124,7 @@
 		    <artifactId>jersey-json</artifactId>
 		    <version>1.19</version>
 		</dependency>
+		
 		<dependency>
 	        <groupId>com.google.code.gson</groupId>
 	        <artifactId>gson</artifactId>
@@ -134,7 +135,8 @@
 		    <groupId>com.thoughtworks.xstream</groupId>
 		    <artifactId>xstream</artifactId>
 		    <version>1.3.1</version>
-		</dependency>	    
+		</dependency>
+			    
 		<!-- ****************************************************************** -->
 		
 		<dependency>
